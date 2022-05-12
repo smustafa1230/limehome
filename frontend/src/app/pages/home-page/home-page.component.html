@@ -1,0 +1,101 @@
+
+  <div class=" example-container">
+      <h1>Book your suite at limehome</h1>
+      <mat-divider></mat-divider>
+      <div class="form-container">
+    <form [formGroup]="reservationForm" (ngSubmit)="submit()">
+
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Check-in/out Date</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="checkInDate" placeholder="Check-in date">
+              <input matEndDate formControlName="checkOutDate" placeholder="Check-out date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          
+            <mat-error *ngIf="reservationForm.controls.checkInDate.hasError('matcheckInDateDateInvalid')">Invalid Check-in date</mat-error>
+            <mat-error *ngIf="reservationForm.controls.checkOutDate.hasError('matcheckOutDateDateInvalid')">Invalid Check-out date</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>No of Guests</mat-label>
+            <input matInput type="number" required placeholder="Number of Guests" formControlName="noOfGuests" >
+            <mat-error>Number of Guests is required</mat-error>
+            
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput maxlength="15" required inputmode="tel" placeholder="First Mame" formControlName="firstName" #nameInput>
+            <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint>
+            <mat-error>First Name is required</mat-error>
+            <!-- <mat-error **ngIf="(reservationForm.get('firstName')).hasError('minlength')">
+                Please enter more than 10 character
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput maxlength="15" required inputmode="tel" placeholder="Last Mame" formControlName="lastName" #nameInput>
+            <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
+            <mat-error>Last Name is required</mat-error>
+            <mat-error *ngIf="reservationForm.controls.email.hasError('minlength')">
+                Please enter more than 10 character
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email Address:</mat-label>
+            <input matInput type="email" required formControlName="email" placeholder="Your email">
+            <!-- <mat-icon matSuffix>mail_outline</mat-icon> -->
+            <mat-hint>Input the fully qualified email address</mat-hint>
+            <mat-error *ngIf="reservationForm.controls.email.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="reservationForm.controls.email.hasError('email')">Please enter valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Billing Address</mat-label>
+            <textarea matInput placeholder="address"  required formControlName="billingAddress"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput required placeholder="City" formControlName="city" >
+          <mat-error>City is required</mat-error>
+          
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput required placeholder="Postal Code" formControlName="postalCode" >
+          <mat-error>Postal Code is required</mat-error>
+          
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="country" required>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput required placeholder="Phone Number" formControlName="phoneNumber" >
+            <mat-error>Phone Number is required</mat-error>
+            
+          </mat-form-field>
+
+        <div mat-dialog-actions class="align-left">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!reservationForm.valid">Book Now</button>
+        </div>
+    </form>
+</div>
+    <div>{{ reservationForm.value | json }}</div>
+    <div>{{ reservationForm.valid | json }}</div>
+    <div>{{ reservationForm.controls.email.hasError | json }}</div>
+</div>

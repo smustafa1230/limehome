@@ -1,0 +1,47 @@
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* You can add global styles to this file, and also import other style files */
+
+
+html {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #0e0e0e;
+}
+
+// custom styles
+.p-0 {
+  padding: 0px;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.muted {
+  color: #8f969c;
+  font-family: sans-serif;
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
+}
+
+.text-red {
+  color: red;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
