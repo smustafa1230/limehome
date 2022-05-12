@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {DataService} from './../../services/data/data.service';
+import { country } from 'src/app/constants/general.constants';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,7 @@ import * as _ from 'lodash';
 })
 export class HomePageComponent implements OnInit {
   reservationForm: FormGroup;
-
+  countryArray:Array<any> = country;
   constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private service: DataService) { }
 
   ngOnInit(): void {

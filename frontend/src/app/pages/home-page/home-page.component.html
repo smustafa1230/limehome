@@ -78,8 +78,8 @@
         <mat-form-field appearance="outline">
             <mat-label>Select</mat-label>
             <mat-select formControlName="country" required>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option *ngFor="let country of countryArray;" value="{{country.name}}">{{country.name}}</mat-option>
+              <!-- <mat-option value="two">Second option</mat-option> -->
             </mat-select>
           </mat-form-field>
         
@@ -95,7 +95,7 @@
         </div>
     </form>
 </div>
-    <div>{{ reservationForm.value | json }}</div>
+    <!-- <div>{{ reservationForm.value | json }}</div>
     <div>{{ reservationForm.valid | json }}</div>
-    <div>{{ reservationForm.controls.email.hasError | json }}</div>
+    <div>{{ reservationForm.controls.email.hasError | json }}</div> -->
 </div>
